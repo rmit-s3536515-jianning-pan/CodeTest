@@ -43,9 +43,53 @@ body{
   background-color: #010326;
   color: #f2f2f2;
 }
+
 div.site-name{
     padding: 0.5rem 0;
 }
+
+div.site-name ul{
+  display: flex;
+  justify-content:flex-end;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+div.site-name ul li{
+  padding:10px;
+  /* background: red; */
+}
+
+div.site-name ul li a{
+
+  font-size:0.7rem;
+  color:#f2f2f2;
+  font-weight: bold;
+  position: relative;
+
+}
+
+/* div.site-name ul li a::after{
+  content:'';
+  width:0px;
+  height:5px;
+  background: #f2f2f2;
+  position: absolute;
+  top:100%;
+  left:0;
+  transition: 0.5s;
+}
+
+div.site-name ul li a:hover  li a::after {
+  width:100%;
+} */
+
+div.site-name ul li:first-child{
+  border-right: 2px solid #f2f2f2;
+}
+
+
+
 
 nav .nav-container{
   background-color:white;
@@ -360,8 +404,196 @@ footer{
   background-color: red;
 }
 
-/* contact page */
+
 #aboutus header , #contactus header, #error header,#health header,
-#environment header,#education header,#visa header{
+#environment header,#education header,#visa header, #register header{
   margin:1rem 0;
+}
+
+/* contact page */
+#contact-form{
+  box-sizing: border-box;
+}
+.row{
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.row .col{
+  width:calc(50% - 1rem);
+  box-sizing: border-box;
+  margin: 1.1rem 0;
+}
+
+.row .col-1{
+  width:100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+textarea{
+  box-sizing: border-box;
+  width: 100%;
+  resize: none;
+}
+
+#contact-form input[type="submit"]{
+  cursor: pointer;
+}
+
+.row  label{
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+#contact-form input,
+#contact-form textarea{
+  width: 100%;
+  border:2px solid #000;
+  padding:0.8rem;
+  font-size: 0.8rem;
+  outline : none;
+  font-weight: bold;
+}
+
+#fade{
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: #4CAF50;
+  margin: 20px;
+  display:none;
+
+}
+
+
+/* register page */
+
+#register-form{
+  position: relative;
+  /* height:100vh; */
+  /* background: red; */
+  /* max-width:100%; */
+}
+fieldset{
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin:1.5rem 0;
+  padding:1.5rem 0;
+  box-sizing: border-box;
+  /* position: rela; */
+  /* top:50%;
+  left:50%;
+  transform: translate(-50%,-50%); */
+
+}
+
+
+#progressbar{
+  display:flex;
+  justify-content: center;
+  counter-reset: step;
+  overflow:hidden;
+}
+
+#progressbar li{
+  /* width: calc((100%/3)); */
+  flex-grow: 1;
+  /* width:33%; */
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+}
+
+
+#progressbar li::before{
+  text-align: center;
+  content: counter(step);
+  counter-increment: step;
+  width:30px;
+  height: 30px;
+  line-height: 30px;
+  display:block;
+  font-size: 16px;
+  font-weight: bold;
+  color:black;
+  background-color: white;
+  border-radius: 5px;
+  margin:0 auto;
+}
+
+#progressbar li::after{
+  content: '';
+  width: 100%;
+  height: 2px;
+  background:green;
+  position: absolute;
+  left: -51%;
+  top:15px;
+  z-index: -1;
+}
+
+#progressbar li:first-child::after{
+  content: none;
+}
+
+#progressbar .current-progress::before, #progressbar .current-progress::after{
+  background-color: green;
+  color:white;
+}
+
+.col-8{
+width: 80%;
+box-sizing: border-box;
+margin:10px auto;
+}
+
+.col-5{
+  width:48%;
+  box-sizing: border-box;
+  margin: 10px auto;
+}
+
+#register-form fieldset:not(:first-of-type){
+  display: none;
+}
+
+#register-form input{
+  width:100%;
+  outline:none;
+  border:2px solid black;
+  font-size:0.8rem;
+  padding:0.6rem;
+  box-sizing: border-box;
+}
+
+
+#register-form input[type="button"]{
+  background-color: #4CAF50;
+  cursor: pointer;
+}
+
+#register-form input[type="submit"]{
+  background-color: #FF5722;
+  cursor: pointer;
+  color:black;
+}
+#register-form label{
+  text-align:left;
+}
+
+#after-submit{
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: #4CAF50;
+  margin: 20px;
+  display:none;
+
 }

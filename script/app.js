@@ -3,18 +3,12 @@ class spa{
   init(){
     // select class element "page"
     this.links = document.querySelectorAll("a");
-    // this.clickableDiv = document.querySelectorAll('#info-service .box');
+
     const self = this;
     //looping for each link and add click listener
     this.links.forEach((link)=>{
       link.addEventListener('click',(ev)=>self.navTo(ev));
     });
-
-    // this.clickableDiv.forEach((link)=>{
-    //   link.addEventListener('click',(ev)=>self.navTo(ev));
-    // });
-
-
 
     //when start , replace the state from " " to #home
     history.replaceState(null,null,'#home');
@@ -78,5 +72,112 @@ const obj = new spa();
 
 document.addEventListener('DOMContentLoaded',function(ev){
   obj.init();
+});
 
+function showSuccess(){
+  let result = document.querySelector('#fade');
+  result.style.display = "block";
+  result.textContent = "You have submitted your form!";
+
+  setTimeout(function(){
+      result.style.display = "none";
+  },3000);
+}
+
+let contact_form  = document.getElementById("contact-form");
+contact_form.addEventListener('submit',(ev)=>{
+  ev.preventDefault();
+
+  showSuccess();
+
+});
+
+let nextbtn = document.querySelectorAll('.next');
+let prevbtn = document.querySelectorAll('.previous');
+let register_form = document.querySelector('#register-form');
+
+let progressbar = document.querySelectorAll('#progressbar li');
+let lists = Array.prototype.slice.call(progressbar);
+
+
+nextbtn.forEach((next)=>{
+  next.addEventListener('click',(ev)=>{
+
+
+
+      let currentfs = next.parentElement.parentElement.parentElement;
+        let nextfs = next.parentElement.parentElement.parentElement.nextElementSibling;//next fieldset
+        let fieldsets = Array.prototype.slice.call(document.querySelectorAll('#register-form fieldset'));
+        let currentIdx = fieldsets.indexOf(nextfs);
+        let inputs;
+
+          if(currentIdx==1){
+             inputs = currentfs.querySelectorAll('input[type="email"],input[type="password"]');
+          }
+          else if(currentIdx == 2){
+             inputs = currentfs.querySelectorAll('input[type="text"]');
+          }
+
+
+          console.log(inputs.length);
+          let found = 0; //counting the valide input
+          inputs.forEach((input)=>{
+            if(input.checkValidity()){
+              found++;
+            }
+          });
+          console.log(found);
+
+          if(found==inputs.length){
+            lists[currentIdx].classList.add('current-progress');
+
+            nextfs.style.display = "block";
+
+            currentfs.style.display = "none";
+          }
+          else{
+                alert("you have to complet form");
+          }
+  });
+});
+
+prevbtn.forEach((prev)=>{
+  prev.addEventListener('click',(ev)=>{
+    let currentfs = prev.parentElement.parentElement.parentElement;
+      let prevfs = prev.parentElement.parentElement.parentElement.previousElementSibling;//previous fieldset
+      let fieldsets = Array.prototype.slice.call(document.querySelectorAll('#register-form fieldset'));
+      let currentIdx = fieldsets.indexOf(currentfs); // get the index of current fieldsets
+
+      //remove the current progressbar to be inactive
+      lists[currentIdx].classList.remove('current-progress');
+
+      console.log(lists[currentIdx]);
+
+      // fieldset hide
+      currentfs.style.display = "none";
+
+      //show previous fs
+      prevfs.style.display = "block";
+
+  });
+});
+
+register_form.addEventListener('submit',(ev)=>{
+  ev.preventDefault();
+
+  lists[1].classList.remove('current-progress');
+  lists[2].classList.remove('current-progress');
+
+  // fieldset hide
+  let fieldsets = Array.prototype.slice.call(document.querySelectorAll('#register-form fieldset'));
+  fieldsets[0].style.display = "block";
+    fieldsets[2].style.display = "none";
+
+    let result = document.querySelector('#after-submit');
+    result.style.display = "block";
+    result.textContent = "You have submitted your form!";
+
+    setTimeout(function(){
+        result.style.display = "none";
+    },3000);
 });

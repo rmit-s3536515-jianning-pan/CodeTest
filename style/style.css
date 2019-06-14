@@ -98,6 +98,7 @@ main header{
   padding:0.5em 0 ;
   position:relative;
 }
+
 .latest-news::after{
   content:'';
   position:absolute;

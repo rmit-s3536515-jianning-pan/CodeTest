@@ -1,3 +1,123 @@
-@media screen and (max-width:400px) {
-  
+@media screen and (max-width:930px) {
+
+  #site-header{
+    display: none;
+  }
+  header{
+    padding-left:1.5rem;
+    text-align: center;
+  }
+  main section{
+    text-align: center;
+    margin:1.5rem 0;
+  }
+
+  .nav-container ul{
+    flex-direction: column;
+
+  }
+  .nav-container ul li{
+
+    text-align: center;
+    margin:10px 0;
+    border-bottom: 1px solid grey;
+  }
+  .nav-container ul li:last-child{
+    border-bottom: none;
+  }
+
+  .nav-container ul li:hover a:before{
+    width: 0;
+  }
+
+.box{
+  width:100%;
+}
+.latest-news{
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid rgba(0,0,0,.6);
+}
+.latest-news::after{
+  display: none;
+}
+
+#info-service .box{
+  border-radius: 0;
+  box-shadow:none;
+}
+
+
+/* social media style */
+.connect{
+    text-align: center;
+    width:100%;
+}
+
+.connect::after{
+    display:none;
+}
+.SM-content ul{
+  padding-top:1rem;
+  flex-direction: column;
+  text-align: center;
+}
+
+.SM-content ul li{
+  padding-bottom: 1.2rem;
+}
+
+/* footer style */
+.footer-container {
+  flex-direction: column;
+}
+
+.footer-container ul{
+  font-size:1.4rem;
+}
+.footer-container ul li:first-child{
+  font-size: 2rem;
+}
+
+.footer-container ul li{
+  text-align: center;
+}
+.footer-container ul li:last-child{
+  border-bottom: 2px solid rgba(0,0,0,.6);
+}
+
+.last{
+  border-bottom: none !important;
+}
+
+.footer-about {
+
+  text-align: center;
+  width: 100% !important;
+}
+.footer-about::after{
+  display: none;
+}
+
+.footer-faq{
+
+  text-align: center;
+  width: 100% !important;
+}
+.footer-faq::after{
+  display: none;
+}
+
+
+
+.footer-support{
+
+  text-align: center;
+  width: 100% !important;
+}
+
+.footer-support::after{
+  display: none;
+}
+
 }

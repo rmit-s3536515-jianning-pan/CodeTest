@@ -3,12 +3,18 @@ class spa{
   init(){
     // select class element "page"
     this.links = document.querySelectorAll("a");
-
+    // this.clickableDiv = document.querySelectorAll('#info-service .box');
     const self = this;
     //looping for each link and add click listener
     this.links.forEach((link)=>{
       link.addEventListener('click',(ev)=>self.navTo(ev));
     });
+
+    // this.clickableDiv.forEach((link)=>{
+    //   link.addEventListener('click',(ev)=>self.navTo(ev));
+    // });
+
+
 
     //when start , replace the state from " " to #home
     history.replaceState(null,null,'#home');
@@ -22,6 +28,7 @@ class spa{
       ev.preventDefault();
 
         let linkClicked = ev.target.getAttribute('data-target'); // get the target link
+        console.log(linkClicked);
         let activePage = document.querySelector('.active');
         let selectedPage = document.getElementById(linkClicked);
         if(activePage == null || linkClicked == null || selectedPage == null){

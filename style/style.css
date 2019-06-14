@@ -27,6 +27,14 @@ img{
   margin: 0 auto;
 }
 
+.page{
+  display: none;
+  min-height: 500px;
+}
+
+.active{
+  display: block;
+}
 
 #site-header{
   background-color: #010326;
@@ -293,6 +301,6 @@ footer{
 }
 
 /* contact page */
-#contact-page header{
-  margin-bottom:1rem;
+#aboutus header , #contactus header, #error header{
+  margin:1rem 0;
 }

@@ -121,3 +121,27 @@
 }
 
 }
+
+@media screen and (max-width:540px) {
+
+  #contact-form .row .col{
+    width:90%;
+    margin:0 auto;
+    padding:0;
+
+  }
+
+  #contact-form .row .col input{
+    width:90%;
+
+  }
+}
+
+@media screen and (max-width:440px) {
+  #progressbar li{
+    font-size:18px;
+    text-transform:lowercase;
+    text-transform: capitalize;
+  }
+
+}

@@ -74,10 +74,10 @@ document.addEventListener('DOMContentLoaded',function(ev){
   obj.init();
 });
 
-function showSuccess(){
+function showSuccess(text){
   let result = document.querySelector('#fade');
   result.style.display = "block";
-  result.textContent = "You have submitted your form!";
+  result.textContent = text;
 
   setTimeout(function(){
       result.style.display = "none";
@@ -88,10 +88,21 @@ let contact_form  = document.getElementById("contact-form");
 contact_form.addEventListener('submit',(ev)=>{
   ev.preventDefault();
 
-  showSuccess();
+  showSuccess("You have submitted your form!");
 
 });
 
+function warnUser(text){
+  let result = document.getElementById('after-submit');
+  console.log(result);
+  result.style.display = "block";
+  result.style.background = "red";
+  result.textContent = text;
+
+  setTimeout(function(){
+      result.style.display = "none";
+  },3000);
+}
 let nextbtn = document.querySelectorAll('.next');
 let prevbtn = document.querySelectorAll('.previous');
 let register_form = document.querySelector('#register-form');
@@ -113,6 +124,8 @@ nextbtn.forEach((next)=>{
 
           if(currentIdx==1){
              inputs = currentfs.querySelectorAll('input[type="email"],input[type="password"]');
+
+
           }
           else if(currentIdx == 2){
              inputs = currentfs.querySelectorAll('input[type="text"]');
@@ -129,6 +142,15 @@ nextbtn.forEach((next)=>{
           console.log(found);
 
           if(found==inputs.length){
+
+            if(currentIdx==1){
+              let pwd = document.getElementById('pwd').value;
+              let confirm_pwd = document.getElementById('confirm-pwd').value;
+              if(pwd!=confirm_pwd){
+                warnUser("Passowrd and confirm password does not match!!");
+                return;
+              }
+            }
             lists[currentIdx].classList.add('current-progress');
 
             nextfs.style.display = "block";
@@ -136,7 +158,8 @@ nextbtn.forEach((next)=>{
             currentfs.style.display = "none";
           }
           else{
-                alert("you have to complet form");
+            warnUser("You have to complet form");
+
           }
   });
 });
@@ -162,6 +185,7 @@ prevbtn.forEach((prev)=>{
   });
 });
 
+// when submit 
 register_form.addEventListener('submit',(ev)=>{
   ev.preventDefault();
 
@@ -175,7 +199,8 @@ register_form.addEventListener('submit',(ev)=>{
 
     let result = document.querySelector('#after-submit');
     result.style.display = "block";
-    result.textContent = "You have submitted your form!";
+    result.style.background = "green";
+    result.textContent = "You have successfully registered!";
 
     setTimeout(function(){
         result.style.display = "none";

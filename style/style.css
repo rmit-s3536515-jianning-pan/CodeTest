@@ -504,9 +504,7 @@ fieldset{
 }
 
 #progressbar li{
-  /* width: calc((100%/3)); */
   flex-grow: 1;
-  /* width:33%; */
   text-transform: uppercase;
   position: relative;
   text-align: center;
@@ -595,5 +593,4 @@ margin:10px auto;
   background-color: #4CAF50;
   margin: 20px;
   display:none;
-
 }

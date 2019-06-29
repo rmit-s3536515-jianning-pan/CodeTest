@@ -185,7 +185,7 @@ prevbtn.forEach((prev)=>{
   });
 });
 
-// when submit 
+// when submit
 register_form.addEventListener('submit',(ev)=>{
   ev.preventDefault();
 
